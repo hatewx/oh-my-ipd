@@ -1,6 +1,6 @@
 # Oh My OpenCode - IPD Edition
 
-> Automated Virtual PDT Team with Huawei IPD Process Simulation based on OMO
+> Automated Virtual PDT Team with Huawei IPD Process Delivery System based on oh-my-opencode
 
 [![IPD-OMO](https://img.shields.io/badge/IPD--OMO-v1.0.0-blue)](./) [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
@@ -39,14 +39,14 @@ Development (@developer)
 
 ## Virtual PDT Team
 
-| Agent | Role | Responsibilities |
-|-------|------|-----------------|
-| **@developer** | Developer | Implement features, write tests, submit TR |
-| **@lpdt** | Project Manager | Coordinate team, strategic decisions, resource management |
-| **@pdu** | Product Manager | Define Charter, requirements baseline, validation |
-| **@se** | System Architect | Create LLD, architecture review, technical validation |
-| **@pqa** | Quality Assurance | Code quality checks, standards enforcement, security scanning |
-| **@tmm** | Test Manager | Integration testing, E2E testing, performance validation |
+| Agent          | Role              | Responsibilities                                              |
+| -------------- | ----------------- | ------------------------------------------------------------- |
+| **@developer** | Developer         | Implement features, write tests, submit TR                    |
+| **@lpdt**      | Project Manager   | Coordinate team, strategic decisions, resource management     |
+| **@pdu**       | Product Manager   | Define Charter, requirements baseline, validation             |
+| **@se**        | System Architect  | Create LLD, architecture review, technical validation         |
+| **@pqa**       | Quality Assurance | Code quality checks, standards enforcement, security scanning |
+| **@tmm**       | Test Manager      | Integration testing, E2E testing, performance validation      |
 
 ## Quick Start
 
@@ -78,6 +78,7 @@ git clone https://github.com/hatewx/oh-my-ipd \
 ```
 
 Auto-triggers:
+
 - **@pdu** creates Charter (requirements baseline)
 - **@se** creates LLD (detailed design)
 - **@lpdt** initializes project state
@@ -129,7 +130,7 @@ Developer:
   📝 Implementing analytics-api module
   🧪 Writing unit tests
   ✅ Self-test: PASS
-  
+
   Submitting to TR...
 
 ---
@@ -147,13 +148,13 @@ Developer: 🎉 TR PASSED! Feature complete.
 
 ## Common Commands
 
-| Command | Purpose | Example |
-|---------|---------|---------|
-| `/ipd-start` | Start new project | `/ipd-start myapp "description"` |
-| `/ipd-status` | Check status | `/ipd-status` |
-| `/ipd-tr start` | Start TR | `/ipd-tr start` |
-| `/ipd-tr retry` | Retry TR | `/ipd-tr retry` |
-| `/ipd-charter` | View Charter | `/ipd-charter` |
+| Command         | Purpose           | Example                          |
+| --------------- | ----------------- | -------------------------------- |
+| `/ipd-start`    | Start new project | `/ipd-start myapp "description"` |
+| `/ipd-status`   | Check status      | `/ipd-status`                    |
+| `/ipd-tr start` | Start TR          | `/ipd-tr start`                  |
+| `/ipd-tr retry` | Retry TR          | `/ipd-tr retry`                  |
+| `/ipd-charter`  | View Charter      | `/ipd-charter`                   |
 
 ## Using Agents
 
@@ -179,13 +180,13 @@ Press **Tab** to cycle through 6 agents (OpenCode).
 
 ## Comparison
 
-| Feature | OMO Default | IPD-OMO |
-|---------|------------|---------|
-| **Logic** | Agile iteration (YOLO) | Structured & robust |
-| **Roles** | All-in-one Agent | Matrix PDT team |
-| **Quality** | Self-correction | External review + gates |
-| **Process** | Free flow | Phased + TR |
-| **Decision** | Automatic | Layered (LPDT) |
+| Feature      | OMO Default            | IPD-OMO                 |
+| ------------ | ---------------------- | ----------------------- |
+| **Logic**    | Agile iteration (YOLO) | Structured & robust     |
+| **Roles**    | All-in-one Agent       | Matrix PDT team         |
+| **Quality**  | Self-correction        | External review + gates |
+| **Process**  | Free flow              | Phased + TR             |
+| **Decision** | Automatic              | Layered (LPDT)          |
 
 ## Advanced Documentation
 

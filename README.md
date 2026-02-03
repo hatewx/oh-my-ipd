@@ -1,6 +1,6 @@
 # Oh My OpenCode - IPD Edition
 
-> 基于 OMO 的全自动 PDT 团队与华为 IPD 流程模拟系统
+> 基于 oh-my-opencode 的全自动 PDT 团队与华为 IPD 流程软件全流程交付系统
 
 [![IPD-OMO](https://img.shields.io/badge/IPD--OMO-v1.0.0-blue)](./) [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
