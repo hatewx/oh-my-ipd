@@ -1,0 +1,355 @@
+# Oh My OpenCode - IPD Edition
+
+> 基于 OMO 的全自动 PDT 团队与华为 IPD 流程模拟系统
+
+[![IPD-OMO](https://img.shields.io/badge/IPD--OMO-v1.0.0-blue)](./) [![License](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
+
+## 核心理念
+
+**OPC (One Person Company)** 通过 **IPD-OMO** 实现无人化智能体研发团队：
+
+- **OMO** 作为"自动驾驶执行者"，负责微观代码实现
+- **IPD** 作为"航线管理系统"，负责宏观质量门禁
+- **虚拟 PDT 团队** 模拟华为矩阵组织，实现结构化稳健开发
+
+## 架构概览
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                      IPD-OMO 系统架构                           │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│   ┌─────────────┐    ┌─────────────┐    ┌─────────────┐        │
+│   │   LPDT      │◄──►│    PDU      │    │     SE      │        │
+│   │  (项目经理) │    │  (产品经理) │◄──►│  (架构师)   │        │
+│   └──────┬──────┘    └─────────────┘    └─────────────┘        │
+│          │                                                      │
+│          │         ┌─────────────────────────────┐             │
+│          │         │       TR Dry Run Loop       │             │
+│          │         ├─────────────────────────────┤             │
+│          │         │  ┌─────────┐ ┌─────────┐   │             │
+│          └────────►│  │Developer│ │  PQA    │   │             │
+│                    │  │ (实现)  │ │(质量)   │   │             │
+│                    │  └────┬────┘ └────┬────┘   │             │
+│                    │       │           │        │             │
+│                    │  ┌────┴───────────┴────┐   │             │
+│                    │  │       TMM          │   │             │
+│                    │  │    (功能验证)      │   │             │
+│                    │  └───────────────────┘   │             │
+│                    └─────────────────────────────┘             │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+## 虚拟 PDT 团队
+
+| 角色          | 职责              | 关注点                         |
+| ------------- | ----------------- | ------------------------------ |
+| **LPDT**      | 项目经理/小CEO    | 进度、成本、风险决策           |
+| **PDU**       | 产品经理          | Charter、需求基线、商业价值    |
+| **SE**        | 系统工程师/架构师 | LLD、架构一致性、技术债务      |
+| **Developer** | OMO 开发核心      | 代码实现、单元测试、持续迭代   |
+| **PQA**       | 质量保证          | 流程合规、规范检查、门禁执行   |
+| **TMM**       | 测试经理          | 端到端验证、测试用例、缺陷管理 |
+
+## 快速开始
+
+### 1. 安装
+
+本插件支持两种 AI 编码助手平台：**OpenCode** 和 **Claude Desktop**。
+
+#### 方式一：OpenCode（推荐，更简单）
+
+OpenCode 原生支持 Markdown 配置，安装非常简单：
+
+```bash
+# 进入插件目录
+cd /path/to/oh-my-ipd
+
+# 运行自动安装脚本
+./setup-opencode.sh
+
+# 验证安装
+./verify-installation.sh
+```
+
+安装脚本会自动：
+
+- 将 6 个虚拟 PDT 团队成员（agents）安装到 `~/.config/opencode/agents/`
+- 将 4 个 IPD 命令（commands）安装到 `~/.config/opencode/commands/`
+- 将 2 个协作技能（skills）安装到 `~/.config/opencode/skills/`
+- 创建工作流钩子插件到 `~/.config/opencode/plugins/`
+
+安装完成后启动 OpenCode：
+
+```bash
+opencode
+```
+
+进一步的，你可以将 oh-my-ipd 配合 oh-my-opencode 一起使用，其在开发环境通过多 agent 和 /ulw-loop /ralph-loop 等流程极大的提升了开发质量。checkout: [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode)
+
+#### 方式二：Claude Code
+
+将插件添加到 Claude Code 配置：
+
+```bash
+# 克隆插件到 Claude Code 插件目录
+git clone https://github.com/your-org/oh-my-ipd \
+  ~/.claude/plugins/oh-my-ipd
+```
+
+或者，如果已经克隆到本地：
+
+```bash
+# 创建符号链接
+ln -s /path/to/oh-my-ipd ~/.claude/plugins/oh-my-ipd
+```
+
+重启 Claude Code 以加载插件。
+
+#### 验证安装
+
+安装成功后，你应该能看到：
+
+**OpenCode:**
+
+- `/agents` 可以切换到 6 个 PDT 团队成员, `@developer`, `@pdu`, `@se`, `@pqa`, `@tmm`, `@lpdt` 他们可以直接跟这个角色交互
+
+  ![agents in opencode](./demo-assets/oc-agents.png)
+
+- 输入 `/ipd` 可以看到 4 个 IPD 命令
+
+  ![commands in opencode](./demo-assets/oc-cmds.png)
+
+**Claude Code:**
+
+- AI 会自动调用虚拟 PDT 团队成员, `/agents` 可以切换到 6 个 PDT 团队成员, `@developer`, `@pdu`, `@se`, `@pqa`, `@tmm`, `@lpdt` 他们可以直接跟这个角色交互
+
+  ![agents in claude code](./demo-assets/cc-agents.png)
+
+- 输入 `/ipd` 可以看到 4 个 IPD 命令
+
+  ![commands in claude code](./demo-assets/cc-cmds.png)
+
+### 2. 启动项目
+
+> 如果你想要快速飞跑，  
+> 在 `opencode` 中可以使用的 `/ulw-loop` 或 `/ralph-loop`。  
+> 在 `claude code` 中可以使用 `/ralph-loop`, 但个人更推荐 yolo `claude --dangerously-skip-permissions` 模式。
+
+```bash
+# 启动 IPD-OMO 流程
+/ipd-start "项目名称" "项目描述"
+```
+
+### 3. 查看状态
+
+```bash
+# 查看项目状态
+/ipd-status
+
+# 查看详细状态
+/ipd-status detailed
+```
+
+### 4. 执行 TR Dry Run
+
+```bash
+# 开始新的 TR
+/ipd-tr start
+
+# 重新提交修复
+/ipd-tr retry
+```
+
+## 命令列表
+
+| 命令           | 描述              | 参数                                  |
+| -------------- | ----------------- | ------------------------------------- |
+| `/ipd-start`   | 启动 IPD-OMO 项目 | `project_name`, `description`, `mode` |
+| `/ipd-status`  | 查看项目状态      | `detail_level`                        |
+| `/ipd-tr`      | 执行 TR Dry Run   | `action`, `iteration`                 |
+| `/ipd-charter` | 管理 Charter      | `action`, `change_description`        |
+
+## TR Dry Run Loop
+
+```
+Developer 实现
+    ↓
+提交 TR
+    ↓
+┌─────────────────────────────────────────┐
+│  ┌─────────┐                            │
+│  │  PQA    │──Fail──┐                   │
+│  │质量检查 │        │                   │
+│  └────┬────┘        │                   │
+│       │ Pass        │                   │
+│       ▼             │                   │
+│  ┌─────────┐        │                   │
+│  │  TMM    │──Fail──┤                   │
+│  │功能验证 │        │                   │
+│  └────┬────┘        │                   │
+│       │ Pass        │                   │
+│       ▼             │                   │
+│  ┌─────────┐        │                   │
+│  │   SE    │──Fail──┤───→ 返回 Developer│
+│  │架构评审 │        │      修复         │
+│  └────┬────┘        │                   │
+│       │ Pass        │                   │
+│       ▼             │                   │
+│  ┌─────────┐        │                   │
+│  │  PDU    │──Fail──┘                   │
+│  │需求验证 │                            │
+│  └────┬────┘                            │
+│       │ Pass                            │
+│       ▼                                 │
+│  ┌─────────┐                            │
+│  │  LPDT   │──Pass──→ Release           │
+│  │最终决策 │──Fail──→ 返回 Developer    │
+│  └─────────┘     ──Escalate→ 用户决策   │
+└─────────────────────────────────────────┘
+```
+
+## IPD 阶段映射
+
+| 华为 IPD | OMO 阶段       | 交付物         | 质量门禁       |
+| -------- | -------------- | -------------- | -------------- |
+| Concept  | Charter        | `charter.md`   | PDU 审批       |
+| Plan     | LLD            | `lld.md`       | SE 审批        |
+| Develop  | 编码 + TR1/TR2 | 代码 + TR 报告 | PQA/TMM/SE/PDU |
+| Qualify  | TR3 + 系统测试 | 测试报告       | 全团队         |
+| Launch   | Release        | Release Notes  | LPDT 批准      |
+
+## 项目文档
+
+项目状态文档存储在 `.claude/` 目录：
+
+| 文件               | 描述         | 维护者 |
+| ------------------ | ------------ | ------ |
+| `project-state.md` | 项目整体状态 | LPDT   |
+| `charter.md`       | 需求基线     | PDU    |
+| `lld.md`           | 详细设计     | SE     |
+| `tr-records.md`    | TR 历史记录  | LPDT   |
+| `change-log.md`    | 变更历史     | PDU    |
+
+## 配置文件
+
+### 插件配置 (`plugin.json`)
+
+```json
+{
+  "ipd": {
+    "enabled": true,
+    "tr_dry_run_max_iterations": 10,
+    "auto_escalation": true,
+    "state_file": ".claude/project-state.md"
+  }
+}
+```
+
+## 工作流程
+
+### 标准开发流程
+
+1. **启动项目**
+
+   ```
+   /ipd-start "MyProject" "项目描述"
+   ```
+
+2. **定义 Charter** (PDU)
+   - 创建需求基线
+   - 定义 MVP 范围
+   - 设置验收标准
+
+3. **完成 LLD** (SE)
+   - 设计系统架构
+   - 划分模块
+   - 定义接口契约
+
+4. **开发实现** (Developer)
+   - 编写代码
+   - 编写单元测试
+   - 自测通过
+
+5. **执行 TR** (全团队)
+
+   ```
+   /ipd-tr start
+   ```
+
+   - PQA 质量检查
+   - TMM 功能验证
+   - SE 架构评审
+   - PDU 需求验证
+   - LPDT 最终决策
+
+6. **发布** (LPDT)
+   - 所有门禁通过
+   - 签署 Release
+
+## 特性
+
+- **结构化流程**: 结合华为 IPD 的严谨性和 OMO 的敏捷性
+- **自动 TR 循环**: 自动执行质量门禁和反馈循环
+- **资源监控**: Token 消耗和进度追踪
+- **风险管理**: 自动识别和升级风险
+- **状态透明**: 实时查看项目状态和阻塞
+
+## 对比
+
+| 特性     | OMO 默认        | IPD-OMO         |
+| -------- | --------------- | --------------- |
+| **逻辑** | 敏捷迭代 (YOLO) | 结构化稳健      |
+| **角色** | 全能 Agent      | 矩阵 PDT 团队   |
+| **质量** | 自我纠错        | 外部评审 + 门禁 |
+| **流程** | 自由流动        | 阶段化 + TR     |
+| **决策** | 自动            | 分层决策 (LPDT) |
+
+## 最佳实践
+
+1. **明确 Charter**: 在开发前确保 PDU 完成 Charter 定义
+2. **遵循 LLD**: Developer 严格按照 SE 的 LLD 实现
+3. **积极响应 TR**: Developer 及时响应 TR 反馈
+4. **关注资源**: LPDT 持续监控 Token 消耗
+5. **及时求助**: 遇到阻塞时主动请求支持
+
+## 故障排除
+
+### 项目状态丢失
+
+```bash
+# 重新初始化项目
+/ipd-start "项目名称" "描述" --mode=new
+```
+
+### TR 死循环
+
+```
+如果同一 TR 失败超过 3 次，LPDT 会介入决策：
+- 强制继续
+- 降级交付
+- 重新 Charter
+- 用户介入
+```
+
+### Token 耗尽
+
+```
+LPDT 会触发资源预警：
+- 80%: 警告
+- 100%: 停止或申请追加
+```
+
+## 许可证
+
+MIT License
+
+## 致谢
+
+- [oh-my-opencode](https://github.com/code-yeongyu/oh-my-opencode) - 基础 OMO 实现
+- 华为 IPD 流程 - 质量管理灵感
+
+---
+
+**Built with ❤️ for OPC (One Person Company)**

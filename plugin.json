@@ -1,0 +1,29 @@
+{
+  "id": "oh-my-ipd",
+  "name": "Oh My OpenCode - IPD Edition",
+  "version": "1.0.0",
+  "description": "基于 OMO 的全自动 PDT 团队与华为 IPD 流程模拟系统。实现无人化智能体研发团队，结合华为 IPD 的结构化流程与 OMO 的敏捷执行能力。",
+  "author": "OPC (One Person Company)",
+  "min_cli_version": "0.1.0",
+  "components": {
+    "agents": [
+      "agents/lpdt.md",
+      "agents/pdu.md",
+      "agents/se.md",
+      "agents/developer.md",
+      "agents/pqa.md",
+      "agents/tmm.md"
+    ],
+    "commands": ["commands/ipd-start.md", "commands/ipd-status.md", "commands/ipd-tr.md", "commands/ipd-charter.md"],
+    "skills": ["skills/pdt-collaboration.md", "skills/ipd-workflow.md"],
+    "hooks": ["hooks/pre-tool-use.md", "hooks/post-tool-use.md"]
+  },
+  "config": {
+    "ipd": {
+      "enabled": true,
+      "tr_dry_run_max_iterations": 10,
+      "auto_escalation": true,
+      "state_file": ".claude/project-state.md"
+    }
+  }
+}
