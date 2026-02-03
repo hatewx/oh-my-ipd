@@ -94,7 +94,7 @@ opencode
 
 ```bash
 # 克隆插件到 Claude Code 插件目录
-git clone https://github.com/your-org/oh-my-ipd \
+git clone https://github.com/hatewx/oh-my-ipd \
   ~/.claude/plugins/oh-my-ipd
 ```
 
